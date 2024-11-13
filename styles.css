@@ -1,0 +1,146 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question, .steps, .workspace {
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    gap: 10px;
+}
+
+.step {
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    cursor: grab;
+}
+
+.step:active {
+    cursor: grabbing;
+}
+
+/* .workspace {
+    min-height: 200px;
+    border: 2px dashed #bbb;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fafafa;
+} */
+
+#result .step-result {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #e6f7ff;
+    border-radius: 5px;
+}
+/* styles.css */
+
+.feedback {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 1.2em;
+    transition: opacity 1s ease;
+}
+.step-correct {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green text */
+    border: 2px solid #c3e6cb;
+}
+
+.step-incorrect {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+    border: 2px solid #f5c6cb;
+}
+
+
+.success {
+    background-color: #4caf50;
+}
+
+.error {
+    background-color: #f44336;
+}
+/* Cloud-like appearance for the steps area */
+.steps-container {
+    background-color: #f0f8ff; /* Light blue color */
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    max-width: 250px;
+    margin: auto;
+}
+
+.steps-container::before,
+.steps-container::after {
+    content: "";
+    position: absolute;
+    background-color: #f0f8ff;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Create the cloud puffs around the main container */
+.steps-container::before {
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    left: -40px;
+}
+
+.steps-container::after {
+    width: 120px;
+    height: 120px;
+    bottom: -30px;
+    right: -30px;
+}
+
+/* Brain-like appearance for the workspace area */
+.workspace {
+    background-color: #ffe4e1; /* Light pink color */
+    padding: 30px;
+    border-radius: 50% 50% 40% 40% / 55% 55% 40% 40%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    width: 60%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Additional styling for workspace elements */
+.step-result {
+    padding: 5px;
+    margin-top: 5px;
+    width: 80%;
+    text-align: center;
+    border-radius: 8px;
+}
+

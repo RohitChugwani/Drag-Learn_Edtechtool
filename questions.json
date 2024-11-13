@@ -1,0 +1,31 @@
+[
+    {
+        "question": "Calculate the mean of the following data: 12, 43, 56, 12, 67, 89",
+        "data": [12, 43, 56, 12, 67, 89],
+        "correctSteps": ["sum", "count", "calculateMean"],
+        "steps": [
+            { "action": "sum", "label": "Step 1: Sum all numbers" },
+            { "action": "count", "label": "Step 2: Count the numbers" },
+            { "action": "calculateMean", "label": "Step 3: Divide the sum by the count" }
+        ]
+    },
+    {
+        "question": "Calculate the median of the following data: 10, 12, 15, 18, 20",
+        "data": [10, 12, 15, 18, 20],
+        "correctSteps": ["sort", "count", "checkEvenOdd", "selectMiddle"],
+        "steps": [
+            { "action": "sort", "label": "Step 1: Sort the data" },
+            { "action": "count", "label": "Step 2: Count the numbers" },
+            { "action": "checkEvenOdd", "label": "Step 3: Check if count is even or odd" },
+            { "action": "selectMiddle", "label": "Step 4: If odd, select middle; if even, average middle two" }
+        ]
+    },
+    {
+        "question": "Calculate the mode of the following data: 5, 8, 9, 8, 5, 9, 5",
+        "data": [5, 8, 9, 8, 5, 9, 5],
+        "correctSteps": ["findMode"],
+        "steps": [
+            { "action": "findMode", "label": "Step 1: Find the mode" }
+        ]
+    }
+]

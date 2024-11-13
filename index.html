@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Statistics Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="question">
+            <h2>Question:</h2>
+            <p id="question-text">Loading question...</p>
+        </div>
+        <div class="steps">
+            <h3>Steps</h3>
+            <div id="steps-container">
+                <!-- Dynamic steps will be inserted here -->
+            </div>
+        </div>
+        <div class="workspace" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h3>Workspace</h3>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
