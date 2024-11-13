@@ -211,26 +211,23 @@ function drop(event) {
         //     resultText = `Median of numbers: ${median}`;
         //     stepOrder.push("findMedian");
         //     break;
+       
+        
         case "checkEvenOdd":
             isOdd = count % 2 !== 0;
             resultText = `The count is ${isOdd ? "odd" : "even"}.`;
-            isCorrect = stepOrder.length === 1;
+            isCorrect = stepOrder.length === 2;
             stepOrder.push("checkEvenOdd");
-            
-            if (isOdd) {
-                showConditionalSteps(["selectMiddle"]);
-            } else {
-                showConditionalSteps(["averageMiddleTwo"]);
-            }
             break;
         case "selectMiddle":
             if (isOdd) {
                 const mid = Math.floor(count / 2);
                 resultText = `Median (middle element): ${data[mid]}`;
                 isCorrect = stepOrder.length === 3;
-                stepOrder.push("selectMiddle");
-            } else {
-                resultText = "Incorrect! Try again with the correct option for an even count.";
+                stepOrder.push("selectAppropriateMiddle");
+            }
+             else {
+                resultText = "Incorrect! Try the correct option for an even count.";
             }
             break;
         case "averageMiddleTwo":
@@ -239,9 +236,9 @@ function drop(event) {
                 const mid2 = data[Math.floor(count / 2)];
                 resultText = `Median (average of middle two): ${(mid1 + mid2) / 2}`;
                 isCorrect = stepOrder.length === 3;
-                stepOrder.push("averageMiddleTwo");
-            } else {
-                resultText = "Incorrect! Try again with the correct option for an odd count.";
+                stepOrder.push("selectAppropriateMiddle");
+             } else {
+                 resultText = "Incorrect! Try the correct option for an odd count.";
             }
             break;
         
@@ -312,6 +309,8 @@ function checkCompletion() {
     const resultDiv = document.getElementById("result");
 
     if (stepOrder.length === correctOrder.length) {
+        console.log(JSON.stringify(stepOrder))
+        console.log(JSON.stringify(correctOrder))
         if (JSON.stringify(stepOrder) === JSON.stringify(correctOrder)) {
             displayFeedback("Correct! Moving to next question...", true);
             setTimeout(loadNextQuestion, 2000);
@@ -371,12 +370,27 @@ function findMode(data) {
 
     return modes.join(", ");
 }
-function showConditionalSteps(stepsToShow) {
+// function showConditionalSteps(stepsToShow) {
+//     const stepsContainer = document.getElementById("steps-container");
+//     stepsContainer.innerHTML = ""; // Clear previous steps
+
+//     stepsToShow.forEach(stepAction => {
+//         const stepData = questions[currentQuestionIndex].steps.find(step => step.action === stepAction);
+//         const stepElement = document.createElement("div");
+//         stepElement.className = "step";
+//         stepElement.draggable = true;
+//         stepElement.id = stepData.action;
+//         stepElement.setAttribute("data-action", stepData.action);
+//         stepElement.ondragstart = drag;
+//         stepElement.textContent = stepData.label;
+//         stepsContainer.appendChild(stepElement);
+//     });
+// }
+function renderSteps() {
     const stepsContainer = document.getElementById("steps-container");
     stepsContainer.innerHTML = ""; // Clear previous steps
 
-    stepsToShow.forEach(stepAction => {
-        const stepData = questions[currentQuestionIndex].steps.find(step => step.action === stepAction);
+    questions[currentQuestionIndex].steps.forEach(stepData => {
         const stepElement = document.createElement("div");
         stepElement.className = "step";
         stepElement.draggable = true;
@@ -387,6 +401,7 @@ function showConditionalSteps(stepsToShow) {
         stepsContainer.appendChild(stepElement);
     });
 }
+
 
 // Initialize first question on load
 loadQuestion();
